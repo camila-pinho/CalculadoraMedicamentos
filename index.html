@@ -1,29 +1,100 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-
-    <meta charset="UTF-8">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Calculadora de Medicamentos</title>
-
-    <link rel="stylesheet" href="style.css">
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora de Medicação</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-    <div class="container">
-        <header>
-            <h1>Calculadora de Medicamentos</h1>
-            <p>Ferramenta de apoio para cálculo de doses</p>
-            <button>Começar</button>
-        </header>
+<div class="pad">
+  <div class="perf">
+    <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+    <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+  </div>
+  <div class="tear"></div>
+
+  <header>
+    <div class="rx">℞</div>
+    <div>
+      <h1>Calculadora de Medicação</h1>
+      <p class="sub">Ferramenta de apoio ao cálculo de dose e taxa de gotejamento.</p>
+    </div>
+  </header>
+
+  <section class="block">
+    <div class="block-label">Cálculo de dose</div>
+    <div class="row">
+      <div class="field">
+        <label for="dosePrescrita">Dose prescrita (mg)</label>
+        <input type="number" id="dosePrescrita" step="any" placeholder="ex: 500">
+      </div>
+      <div class="field">
+        <label for="doseDisponivel">Concentração (mg)</label>
+        <input type="number" id="doseDisponivel" step="any" placeholder="ex: 1000">
+      </div>
+      <div class="field">
+        <label for="volApresentacao">Volume da apresentação (mL)</label>
+        <input type="number" id="volApresentacao" step="any" placeholder="ex: 10">
+      </div>
+    </div>
+    <button onclick="calcularDose()">Calcular dose</button>
+    <div class="resultado" id="resultadoDose">
+      <span class="valor" id="valorDose">—</span>
+      <span class="texto">a administrar</span>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="block-label">Cálculo de gotejamento</div>
+    <div class="row">
+      <div class="field">
+        <label for="volumeTotal">Volume total (mL)</label>
+        <input type="number" id="volumeTotal" step="any" placeholder="ex: 500">
+      </div>
+      <div class="field">
+        <label for="tempoInfusao">Tempo de infusão (h)</label>
+        <input type="number" id="tempoInfusao" step="any" placeholder="ex: 6">
+      </div>
+      <div class="field">
+        <label for="tipoEquipo">Equipo</label>
+        <select id="tipoEquipo">
+          <option value="macro">Macrogotas (20 gtt/mL)</option>
+          <option value="micro">Microgotas (60 gtt/mL)</option>
+        </select>
+      </div>
+    </div>
+    <button onclick="calcularGotejamento()">Calcular gotejamento</button>
+
+    <div class="gotejo-resultado">
+      <div class="gotejo-numeros" id="gotejoNumeros">
+        <div class="num-box">
+          <div class="valor" id="valorGtt">—</div>
+          <div class="texto">gotas / min</div>
+        </div>
+        <div class="num-box">
+          <div class="valor" id="valorMlh">—</div>
+          <div class="texto">mL / h</div>
+        </div>
+      </div>
+      <div class="drip-wrap">
+        <svg width="70" height="120" viewBox="0 0 70 120">
+          <rect x="20" y="0" width="30" height="14" rx="3" fill="var(--ink)" opacity="0.85"/>
+          <rect x="26" y="12" width="18" height="8" fill="var(--ink)" opacity="0.85"/>
+          <rect x="10" y="20" width="50" height="86" rx="10" fill="none" stroke="var(--line)" stroke-width="2"/>
+          <rect x="13" y="70" width="44" height="33" rx="8" fill="var(--soro-light)"/>
+          <circle class="drop" id="drop" cx="35" cy="28" r="4.5" fill="var(--soro)"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <footer>protótipo · cálculos de apoio, a conferência clínica continua indispensável</footer>
 </div>
 
-    <script src="script.js"></script>
-
+<script src="script.js"></script>
 </body>
-
 </html>
