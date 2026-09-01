@@ -1,0 +1,27 @@
+body{
+
+    margin:0;
+
+    font-family:Arial;
+
+    background:#f4f9f9;
+
+}
+.container{
+
+    max-width:700px;
+
+    margin:auto;
+
+    padding:20px;
+
+}
+header{
+    text-align: center;
+}
+header h1{
+    color: crimson;
+}
+header p{
+    color:gray
+}
